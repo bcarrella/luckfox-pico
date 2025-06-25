@@ -34,6 +34,10 @@ apk add e2fsprogs-extra
 apk add openntpd
 rc-update add openntpd default
 
+# Install tailscale
+apk add tailscale
+rc-update add tailscaled default
+
 # Clear apk cache
 rm -rf /var/cache/apk/*
 
