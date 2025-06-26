@@ -36,7 +36,7 @@ rc-update add openntpd default
 
 # Install tailscale
 apk add tailscale
-rc-update add tailscaled default
+rc-update add tailscale default
 
 # Clear apk cache
 rm -rf /var/cache/apk/*
