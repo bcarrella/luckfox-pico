@@ -24,6 +24,16 @@ linkdev(){
             ln -sf /dev/mmcblk1p6 userdata
             ln -sf /dev/mmcblk1p7 rootfs
 	    ;;
+         emmc)
+            ln -sf /dev/mmcblk1p1 env
+            ln -sf /dev/mmcblk1p2 idblock
+            ln -sf /dev/mmcblk1p3 uboot
+            ln -sf /dev/mmcblk1p4 boot
+            ln -sf /dev/mmcblk1p5 oem
+            ln -sf /dev/mmcblk1p6 userdata
+            ln -sf /dev/mmcblk1p7 rootfs
+	    ;;
+
 	 esac
    fi 
 }
@@ -46,6 +56,12 @@ if [ ! -d $mountpt ]; then
                         resize2fs $part_dev
                 fi
                 return 0;
+        elif [ "$mountpt" = "IGNORE" -a "emmc" = "$bootmedium" ];then
+                if [ "$root_dev" = "$part_realdev" ];then
+			mount -o remount,rw /
+                        resize2fs $part_dev
+                fi
+                return 0;
         else
                 echo "${0} info: mount point path [$mountpt] not found, skip..."
                 return 1;
@@ -54,6 +70,21 @@ fi
 if test -h $part_dev; then
 case $bootmedium in
         sd)
+                if [ "$root_dev" = "$part_realdev" ];then
+                        resize2fs $part_dev
+                else
+                        e2fsck -y $part_dev
+                        mount -t $part_fstype $part_dev $mountpt
+                        if [ $? -eq 0 ]; then
+                                resize2fs $part_dev
+                                tune2fs $part_dev -L $partname
+                        else
+                                echo "mount $partname error, try to format..."
+                                mke2fs -F -L $partname $part_dev  &&                                    tune2fs -c 0 -i 0 $part_dev &&                                     mount -t $part_fstype $part_dev $mountpt
+                        fi
+                fi
+                ;;
+        emmc)
                 if [ "$root_dev" = "$part_realdev" ];then
                         resize2fs $part_dev
                 else
@@ -171,6 +202,7 @@ fi
 }
 case $bootmedium in
    sd) fstype=ext4 ;;
+   emmc) fstype=ext4 ;;
    mtd) fstype=ubifs ;;
 esac
 case $1 in start) linkdev;
