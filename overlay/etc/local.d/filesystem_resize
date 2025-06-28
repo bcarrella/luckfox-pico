@@ -1,0 +1,4 @@
+#!/bin/bash
+if [ -f /usr/bin/filesystem_resize.sh ]; then
+        /usr/bin/filesystem_resize.sh
+fi
