@@ -25,13 +25,13 @@ linkdev(){
             ln -sf /dev/mmcblk1p7 rootfs
 	    ;;
          emmc)
-            ln -sf /dev/mmcblk1p1 env
-            ln -sf /dev/mmcblk1p2 idblock
-            ln -sf /dev/mmcblk1p3 uboot
-            ln -sf /dev/mmcblk1p4 boot
-            ln -sf /dev/mmcblk1p5 oem
-            ln -sf /dev/mmcblk1p6 userdata
-            ln -sf /dev/mmcblk1p7 rootfs
+            ln -sf /dev/mmcblk0p1 env
+            ln -sf /dev/mmcblk0p2 idblock
+            ln -sf /dev/mmcblk0p3 uboot
+            ln -sf /dev/mmcblk0p4 boot
+            ln -sf /dev/mmcblk0p5 oem
+            ln -sf /dev/mmcblk0p6 userdata
+            ln -sf /dev/mmcblk0p7 rootfs
 	    ;;
 
 	 esac
