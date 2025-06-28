@@ -27,7 +27,7 @@ chown 0:0 /var/empty
 # Extra stuff
 apk add mtd-utils-ubi
 apk add bottom
-apk add neofetch
+#apk add neofetch
 apk add e2fsprogs-extra
 
 # Install NTPD
