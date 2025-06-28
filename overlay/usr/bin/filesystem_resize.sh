@@ -1,1 +1,0 @@
-../../../sdk/project/cfg/BoardConfig_IPC/overlay/overlay-luckfox-glibc-ultra/usr/bin/filesystem_resize.sh
