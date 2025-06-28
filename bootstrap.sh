@@ -30,13 +30,36 @@ apk add bottom
 #apk add neofetch
 apk add e2fsprogs-extra
 
-# Install NTPD
-apk add openntpd
-rc-update add openntpd default
+# Install iptables-legacy
+apk add iptables-legacy
+rc-update add iptables-legacy
+ln -s /usr/sbin/iptables-legacy /usr/sbin/iptables
 
 # Install tailscale
 apk add tailscale
-rc-update add tailscale default
+rc-update add tailscale default 
+
+# install wireguard
+apk add wireguard-tools
+
+# Install Chrony
+apk add chrony
+rc-update add chrony default 
+
+# install curl
+apk add curl
+
+# install nano
+apk add nano
+
+# install ca-certificates
+apk add ca-certificates
+update-ca-certificates
+
+# install staticroute
+rc-update add staticroute
+
+
 
 # Clear apk cache
 rm -rf /var/cache/apk/*
