@@ -1,7 +1,7 @@
 #!/bin/bash
 
 ROOTFS_NAME="rootfs-alpine.tar.gz"
-DEVICE_NAME="pico-mini-b"
+DEVICE_NAME="pico-ultra-flash"
 
 while getopts ":f:d:" opt; do
   case ${opt} in
@@ -38,7 +38,7 @@ esac
 
 #echo "$DEVICE_ID" | ./build.sh lunch
 echo "export RK_CUSTOM_ROOTFS=../sysdrv/custom_rootfs/$ROOTFS_NAME" >> .BoardConfig.mk
-echo "export RK_BOOTARGS_CMA_SIZE=\"1M\"" >> .BoardConfig.mk
+#echo "export RK_BOOTARGS_CMA_SIZE=\"1M\"" >> .BoardConfig.mk
 
 #change size on SD
 if echo "$DEVICE_NAME" | grep -q "\-sd"; then
