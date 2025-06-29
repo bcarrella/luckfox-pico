@@ -6,7 +6,7 @@ linkdev(){
       mkdir -p /dev/block/by-name
       cd /dev/block/by-name
       case $storagemedia in
-         mtd)
+         mtd|spi_nand|slc_nand)
             ln -sf /dev/mtd0 env
             ln -sf /dev/mtd1 idblock
             ln -sf /dev/mtd2 uboot
@@ -99,7 +99,7 @@ case $bootmedium in
                         fi
                 fi
                 ;;
-        mtd)
+        mtd|spi_nand|slc_nand)
                 if [ $partname = "rootfs" ];then
                         echo "rootfs mount on $root_dev"
                 elif [ "$part_fstype" = "ubifs" ]; then
@@ -203,7 +203,7 @@ fi
 case $bootmedium in
    sd) fstype=ext4 ;;
    emmc) fstype=ext4 ;;
-   mtd) fstype=ubifs ;;
+   mtd|spi_nand|slc_nand) fstype=ubifs ;;
 esac
 case $1 in start) linkdev;
 mount_part rootfs IGNORE $fstype ;
