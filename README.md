@@ -2,6 +2,7 @@
 
 Linux systems for LuckFox Pico series, including
 Pico Mini b, Pico Plus and Pico Pro Max (all models with SPI flash).
+Pico Ultra, Pico Ultra W (with EMMC)
 
 Currently only [Alpine Linux](https://alpinelinux.org/) is available.
 
