@@ -58,3 +58,4 @@ Just fork this repo and trigger Github Actions after you made your changes!
 For example,
 * To add software packages, edit `bootstrap.sh`.
 * To change files in the system image, edit `overlay/`.
+* To load Dynamic Kernel Modules, first use scripts in sdk submodule to configure and build the Linux Kernel, then edit `/oem/usr/ko/insmod_ko.sh` to load resulting .ko modules at runtime.
