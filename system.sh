@@ -27,9 +27,14 @@ popd || exit
 
 rm -rf .BoardConfig.mk
 case $DEVICE_NAME in
+  pico-mini-sd) ln -s project/cfg/BoardConfig_IPC/BoardConfig-SD_CARD-Buildroot-RV1103_Luckfox_Pico_Mini-IPC.mk .BoardConfig.mk ;;
+  pico-mini-flash) ln -s project/cfg/BoardCnfig_IPC/BoardConfig-SPI_NAND-Buildroot-RV1103_Luckfox_Pico_Mini-IPC.mk .BoardConfig.mk ;;
   pico-plus-sd) ln -s project/cfg/BoardConfig_IPC/BoardConfig-SD_CARD-Buildroot-RV1103_Luckfox_Pico_Plus-IPC.mk .BoardConfig.mk ;;
   pico-plus-flash) ln -s project/cfg/BoardConfig_IPC/BoardConfig-SPI_NAND-Buildroot-RV1103_Luckfox_Pico_Plus-IPC.mk .BoardConfig.mk ;;
   pico-ultra-flash) ln -s project/cfg/BoardConfig_IPC/BoardConfig-EMMC-Buildroot-RV1106_Luckfox_Pico_Ultra-IPC.mk .BoardConfig.mk ;;
+  pico-ultra-w-flash) ln -s project/cfg/BoardConfig_IPC/BoardConfig-EMMC-Buildroot-RV1106_Luckfox_Pico_Ultra_W-IPC.mk .BoardConfig.mk ;;
+  pico-pro-max-flash) ln -s project/cfg/BoardConfig_IPC/BoardConfig-SPI_NAND-Busybox-RV1106_Luckfox_Pico_Pro_Max-IPC_FASTBOOT.mk .BoardConfig.mk ;;
+  pico-pro-max-sd) ln -s project/cfg/BoardConfig_IPC/BoardConfig-SD_CARD-Buildroot-RV1106_Luckfox_Pico_Pro_Max-IPC.mk .BoardConfig.mk ;;
   *)
     echo "Invalid device: ${DEVICE_NAME}."
     exit 1
