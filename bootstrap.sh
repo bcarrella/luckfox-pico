@@ -59,7 +59,8 @@ update-ca-certificates
 # install staticroute
 rc-update add staticroute
 
-
+# install ethtool
+apk add ehtool
 
 # Clear apk cache
 rm -rf /var/cache/apk/*
